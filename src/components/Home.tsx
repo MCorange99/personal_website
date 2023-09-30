@@ -51,7 +51,7 @@ export default function Home() {
             <h2>Buy me a monster <a>here</a></h2>
             <h2>Check out my work at my <a href="/r/github">GitHub</a></h2>
 
-            <h5>Note: I am a horrible web developer, if you want to help me improve my website you can do that <a href="https://github.com/MCorange99/personal_website">here<a/></h5>
+            <h5>Note: I am a horrible web developer, if you want to help me improve my website you can do that <a href="https://github.com/MCorange99/personal_website">here</a></h5>
         </>
     )
 }
