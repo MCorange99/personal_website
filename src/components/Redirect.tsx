@@ -1,20 +1,22 @@
-import { Route, Router, Routes } from "@solidjs/router";
+import { Route, Router, Routes, useParams } from "@solidjs/router";
+
+const redirects = {
+    "github": "https://github.com/MCorange99",
+    "ko-fi": "https://ko-fi.com/mcorange",
+    "mastadon": "https://river.group.lt/@mcorange",
+};
 
 
 export default () => {
-    const p = window.location.pathname;
-    console.log(p);
-    if (p.startsWith("/r")) {
-        switch (p) {
-            case "/r/github":
-                redirect("https://github.com/MCorange99");
-                break
-        }
-    }
-   return (
-       <>
-        </>
-   );
+    const params = useParams(); 
+    //@ts-ignore
+    const url = (redirects[params["id"] as string] || "/") as string;
+    redirect(url);
+
+    return (
+        <h1>Redirecting...</h1>
+    )
+
 }
 
 

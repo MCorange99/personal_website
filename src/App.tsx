@@ -7,12 +7,8 @@ import Blog from './components/Blog';
 import Socials from './components/Socials';
 import About from './components/About';
 import Donate from "./components/Donate"
+import Redirect from './components/Redirect';
 
-const redirects = [
-    {href: "/github", url: "https://github.com/MCorange99"},
-    {href: "/ko-fi",  url: "https://ko-fi.com/mcorange"},
-    {href: "/mastadon",  url: "https://river.group.lt/@mcorange"}
-]
 
 const App: Component = () => {
     return (
@@ -26,15 +22,15 @@ const App: Component = () => {
                         <Route path="/social" component={Socials} />
                         <Route path="/about" component={About} />
                         <Route path="/donate" component={Donate} />
-                        <Route path="/r">
-                            {redirects.map((val)=>{
+                        <Route path="/r/:id" component={Redirect}>
+                            {/* {redirects.map((val)=>{
                                 return (
                                     <Route path={val.href} component={()=>{
                                         window.location.assign(val.url);
                                         return (<></>);
                                     }}/>
                                 )
-                            })}
+                            })} */}
                         </Route>
                     </Routes>
                 </div>
