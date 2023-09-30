@@ -7,6 +7,7 @@ import python_logo from "../assets/lang_icons/python.svg"
 import c_logo from "../assets/lang_icons/C.svg"
 import cpp_logo from "../assets/lang_icons/CPP.svg"
 import js_logo from "../assets/lang_icons/js.png" // :(
+import { A } from "@solidjs/router"
 
 function ListItem(logo: string | any, name: string) {
     return (
@@ -47,9 +48,9 @@ export default function Home() {
 
             <h1>Other stuff about me</h1>
 
-            <h2>You can get my contact info and socials <a href="/socials">here</a></h2>
-            <h2>Buy me a monster <a>here</a></h2>
-            <h2>Check out my work at my <a href="/r/github">GitHub</a></h2>
+            <h2>You can get my contact info and socials <A href="/socials">here</A></h2>
+            <h2>Buy me a monster <A href="/donate">here</A></h2>
+            <h2>Check out my work at my <A href="/r/github">GitHub</A></h2>
 
             <h5>Note: I am a horrible web developer, if you want to help me improve my website you can do that <a href="https://github.com/MCorange99/personal_website">here</a></h5>
         </>

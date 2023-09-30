@@ -22,7 +22,7 @@ const App: Component = () => {
                         <Route path="/social" component={Socials} />
                         <Route path="/about" component={About} />
                         <Route path="/donate" component={Donate} />
-                        <Route path="/r/:id" component={Redirect}>
+                        <Route path="/r/:id" component={Redirect} />
                             {/* {redirects.map((val)=>{
                                 return (
                                     <Route path={val.href} component={()=>{
@@ -31,7 +31,6 @@ const App: Component = () => {
                                     }}/>
                                 )
                             })} */}
-                        </Route>
                     </Routes>
                 </div>
             </Router>

@@ -11,10 +11,10 @@ function ListItem(logo: string | any, name: string, href: string) {
             <tbody>
                 <tr>
                     <td>
-                        <a href={href}><img width={32} height={32} src={logo}></img></a>
+                        <A href={href}><img width={32} height={32} src={logo}></img></A>
                     </td>
                     <td>
-                        <a href={href}><h2 class="m-0" style={"margin:3px;"}>{name}</h2></a>
+                        <A href={href}><h2 class="m-0" style={"margin:3px;"}>{name}</h2></A>
                     </td>
                 </tr>
             </tbody>
