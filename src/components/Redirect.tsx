@@ -3,7 +3,7 @@ import { Route, Router, Routes, useParams } from "@solidjs/router";
 const redirects = {
     "github": "https://github.com/MCorange99",
     "ko-fi": "https://ko-fi.com/mcorange",
-    "mastadon": "https://river.group.lt/@mcorange",
+    "mastadon": "https://bark.lgbt/@mcorange",
 };
 
 
