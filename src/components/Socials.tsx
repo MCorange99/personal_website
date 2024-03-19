@@ -31,7 +31,7 @@ export default function Socials() {
             {ListItem(mail_icon, "mcorangecodes@gmail.com", "mailto:mcorangecodes@gmail.com")}
             {ListItem(dc_logo, "@mcorange", "")}
             {ListItem(github_logo, "MCorange99", "/r/github")}
-            {ListItem(mastadon_logo, "@river.group.lt@mcorange", "/r/mastadon")}
+            {ListItem(mastadon_logo, "@bark.lgbt@mcorange", "/r/mastadon")}
             {ListItem(matrix_logo, "@mcorange:matrix.mcorangehq.xyz", "")}
         </>
     )
