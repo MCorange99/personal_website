@@ -5,14 +5,17 @@ use clap::Parser;
 #[command(version, about, long_about = None)]
 pub struct CliArgs {
     /// Port to bind to
-    #[arg(short, long, default_value_t=8080)]
-    pub port: u16,
+    #[arg(short, long)]
+    pub port: Option<u16>,
 
     /// Host ip to bind to, usually not required to change
-    #[arg(long, default_value="0.0.0.0")]
-    pub host: String,
+    #[arg(long)]
+    pub host: Option<String>,
 
     /// Extra debugging output
     #[arg(long, short)]
-    pub debug: bool
+    pub debug: bool,
+
+    #[arg(long, short, default_value="./config.toml")]
+    pub config: camino::Utf8PathBuf,
 }

@@ -13,7 +13,10 @@ actix-web = "4.5.1"
 actix-web-lab = "0.20.2"
 anyhow = "1.0.81"
 askama = "0.12.1"
+camino = "1.1.6"
 clap = { version = "4.5.3", features = ["derive"] }
 log = "0.4.21"
+serde = { version = "1.0.197", features = ["derive"] }
 simplelog = { version = "0.12.2", features = ["paris"] }
+toml = "0.8.12"
 # time = { version = "0.3.34", features = ["macros"] }

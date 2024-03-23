@@ -5,10 +5,10 @@ mod templates;
 use actix_web::{web, App, HttpServer};
 use actix_files as actix_fs;
 
-use crate::cli::CliArgs;
+use crate::config::definition::Config;
 
-pub(crate) async fn start_actix(cli: &CliArgs) -> anyhow::Result<()> {
-    let bindip = format!("{}:{}", cli.host, cli.port);
+pub(crate) async fn start_actix(config: &Config) -> anyhow::Result<()> {
+    let bindip = format!("{}:{}", config.webserver.host, config.webserver.port);
 
     log::info!("Serving an http server at http://{bindip}");
     HttpServer::new(|| {
