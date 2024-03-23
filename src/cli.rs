@@ -9,7 +9,7 @@ pub struct CliArgs {
     pub port: u16,
 
     /// Host ip to bind to, usually not required to change
-    #[arg(short, long, default_value="0.0.0.0")]
+    #[arg(long, default_value="0.0.0.0")]
     pub host: String,
 
     /// Extra debugging output
