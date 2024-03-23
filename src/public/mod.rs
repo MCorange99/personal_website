@@ -1,15 +1,19 @@
-use actix_web_lab::respond::Html;
-use actix_web::{Result, Responder};
-use askama::Template;
 
-
+mod routes;
 mod templates;
 
-pub async fn index() -> Result<impl Responder> {
-    let html = templates::IndexTemplate {
-        placeholder: "hewwo world"
-    }.render().expect("Failed to render index.html");
+use actix_web::{web, App, HttpServer};
 
-    Ok(Html(html))
+pub(crate) async fn start_actix() -> anyhow::Result<()> {
+    log::info!("Serving an http server at https://0.0.0.0:8080");
+    HttpServer::new(|| {
+        App::new()
+            .route("/", web::get().to(routes::index))
+    })
+
+    .bind("0.0.0.0:8080")?
+    .run()
+    .await?;
+
+    Ok(())
 }
-
