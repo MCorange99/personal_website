@@ -1,5 +1,4 @@
-use actix_web_lab::respond::Html;
-use actix_web::{web, App, HttpServer, Result, Responder};
+use actix_web::{web, App, HttpServer};
 
 mod public;
 
@@ -8,7 +7,7 @@ async fn main() -> std::io::Result<()> {
 
     HttpServer::new(|| {
         App::new()
-            .route("/", public::get().to(index))
+            .route("/", web::get().to(public::index))
     })
 
     .bind("0.0.0.0:8080")?
