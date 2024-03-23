@@ -10,7 +10,7 @@ async fn main() -> std::io::Result<()> {
     logger::init_logger(&cli);
 
 
-    if let Err(e) = public::start_actix().await {
+    if let Err(e) = public::start_actix(&cli).await {
         log::error!("Actix had an error: {e}");
     }
     Ok(())
