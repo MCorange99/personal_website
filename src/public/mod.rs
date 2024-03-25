@@ -4,15 +4,17 @@ mod templates;
 
 use actix_web::{web, App, HttpServer};
 use actix_files as actix_fs;
+use sqlx::database;
 
-use crate::config::definition::Config;
+use crate::{config::definition::Config, database::Database};
 
-pub(crate) async fn start_actix(config: &Config) -> anyhow::Result<()> {
+pub(crate) async fn start_actix(config: &Config, database: Database) -> anyhow::Result<()> {
     let bindip = format!("{}:{}", config.webserver.host, config.webserver.port);
 
     log::info!("Serving an http server at http://{bindip}");
-    HttpServer::new(|| {
+    HttpServer::new(move || {
         App::new()
+            .app_data(actix_web::web::Data::new(database.clone()))
             .route("/", web::get().to(routes::index)) // index.html
             .service(actix_fs::Files::new("/static", "./static").index_file("index.html")) // static directoryh
     })

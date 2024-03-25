@@ -4,6 +4,7 @@ mod public;
 mod logger;
 mod cli;
 mod config;
+mod database;
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
@@ -18,8 +19,9 @@ async fn main() -> std::io::Result<()> {
         }
     };
 
+    let Ok(database) = database::Database::new(config.get_ref()).await else {return Ok(())};
 
-    if let Err(e) = public::start_actix(config.get_ref()).await {
+    if let Err(e) = public::start_actix(config.get_ref(), database).await {
         log::error!("Actix had an error: {e}");
     }
     Ok(())
