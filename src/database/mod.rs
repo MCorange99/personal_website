@@ -15,6 +15,9 @@ pub struct Database {
 
 impl Database {
     pub async fn new(config: &Config) -> anyhow::Result<Self> {
+
+        sqlx::migrate!("./migrations");
+
         log::info!("Database connecting to {}", config.database.url);
         let conn = PgPoolOptions::new()
             .max_connections(5)
