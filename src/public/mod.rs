@@ -4,7 +4,6 @@ mod templates;
 
 use actix_web::{web, App, HttpServer};
 use actix_files as actix_fs;
-use sqlx::database;
 
 use crate::{config::definition::Config, database::Database};
 

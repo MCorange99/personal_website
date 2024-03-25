@@ -19,10 +19,10 @@ impl Users {
         let hash = bcrypt::hash(password, 15)?;
 
         sqlx::query(r#"
-                INSERT INTO users ( id, email, username, pw_hash, permissions )
-                VALUES ( $1, $2, $3, $4, 0 )
-                RETURNING id
-            "#)
+            INSERT INTO users ( id, email, username, pw_hash, permissions )
+            VALUES ( $1, $2, $3, $4, 0 )
+            RETURNING id
+        "#)
             .bind(id)
             .bind(email)
             .bind(username)
@@ -30,6 +30,7 @@ impl Users {
             .execute(db.connection())
             .await?;
 
+        log::debug!("Created user with id '{id}'");
 
         Ok(id)
     }
@@ -119,12 +120,14 @@ impl Users {
 
     pub async fn remove_user(&self, db: &mut Database) -> anyhow::Result<()> {
         sqlx::query(r#"
-                DELETE FROM users
-                WHERE id = $1
-            "#)
+            DELETE FROM users
+            WHERE id = $1
+        "#)
             .bind(self.id)
             .execute(db.connection())
             .await?;
+
+        log::debug!("Deleted user with id '{}'", self.id);
 
         Ok(())
     }
