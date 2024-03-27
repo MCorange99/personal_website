@@ -10,10 +10,6 @@ body {
 
 }
 
-.titlebar {
-    text-align: center;
-}
-
 .box {
 
     background: rgba(0, 0, 0, 0.8);
@@ -22,8 +18,12 @@ body {
     box-sizing: border-box;
     text-align: center;
     width: 100%;
-    margin: 5px;
+    margin-top: 10px;
     
+}
+
+.titlebar {
+    width: 100%;
 }
 
 a:link {
@@ -34,14 +34,15 @@ a:link {
 }
 
 #content {
-    width: 50%;
+    width: 60%;
 }
 
 #main-pane {
     width: 100%;
-    padding: 10px;
+    margin-top: 10px;
     display: flex;
     flex-direction: row;
+
 }
 
 #content-pane, #sidenav {
@@ -65,7 +66,7 @@ a:link {
     #main-pane {
 
         flex-direction: column;
-        width: 96%;
+        width: 100%;
 
     }
     
