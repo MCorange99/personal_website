@@ -54,6 +54,8 @@ a:link {
     width: 25%;
     font-size: 12pt;
 
+    margin-right: 10px;
+
     display: flex;
     flex-direction: column;
 }
