@@ -4,7 +4,7 @@ use actix_web_lab::respond::Html;
 use actix_web::{web::Data, Responder, Result};
 use askama::Template;
 
-use crate::{database::Database, public::templates::IndexTemplate};
+use crate::{database::Database, web::templates::IndexTemplate};
 
 
 // NOTE: Not usefull to have database here but just so u know how

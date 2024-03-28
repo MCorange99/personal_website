@@ -1,6 +1,6 @@
 use clap::Parser;
 
-mod public;
+mod web;
 mod logger;
 mod cli;
 mod config;
@@ -21,7 +21,7 @@ async fn main() -> std::io::Result<()> {
 
     let Ok(database) = database::Database::new(config.get_ref()).await else {return Ok(())};
 
-    if let Err(e) = public::start_actix(config.get_ref(), database).await {
+    if let Err(e) = web::start_actix(config.get_ref(), database).await {
         log::error!("Actix had an error: {e}");
     }
     Ok(())

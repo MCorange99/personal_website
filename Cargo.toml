@@ -1,5 +1,5 @@
 [package]
-name = "personal-website"
+name = "website"
 version = "0.1.0"
 edition = "2021"
 authors = [
@@ -12,9 +12,10 @@ authors = [
 clap = { version = "4.5.3", features = ["derive"] }
 anyhow = "1.0.81"
 camino = "1.1.6"
-simplelog = { version = "0.12.2", features = ["paris"] }
+# simplelog = { version = "0.12.2", features = ["paris"] }
 toml = "0.8.12"
 serde = { version = "1.0.197", features = ["derive"] }
+env_logger = "0.11.3"
 log = "0.4.21"
 
 #? web
