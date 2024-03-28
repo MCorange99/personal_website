@@ -1,16 +1,17 @@
-
-
-
 .post {
     border: 2px solid purple;
     height: 10%;
-    /* position: relative;
-    object-fit: contain; */
+    display: flex;
+    justify-items: center;
+    margin-bottom: 10px;
 }
 
-.post-img {
-    /* width: fit-content;
-    height: fit-content;
-    position: relative;
-    width: fit-content; */
+.post img {
+    display: block;
+    height: 100%;
+}
+
+.post span {
+    margin-left: 10px;
+    margin-top: 1%;
 }

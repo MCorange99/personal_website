@@ -22,14 +22,39 @@ body {
 
 }
 
+.form-group {
+
+    display: flex;
+    flex-direction: row;
+
+}
+
+.form-group label {
+    display: block;
+    width: 100%;
+}
+
+.form-group input {
+
+    width: 400%;
+
+}
+
 .titlebar {
     width: 100%;
 }
 
-a:link {
+a {
 
     color: purple;
     text-decoration: none;
+    transition: color 100ms ease-in-out;
+
+}
+
+a:hover {
+
+    color: blueviolet;
 
 }
 
@@ -51,6 +76,8 @@ a:link {
 
 #sidenav {
 
+    position: relative;
+
     width: 25%;
     font-size: 12pt;
 
@@ -58,6 +85,72 @@ a:link {
 
     display: flex;
     flex-direction: column;
+}
+
+#login-modal {
+
+    display: block;
+    background: #222222;
+    border: solid 4px purple;
+    padding: 20px;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}
+
+#login-modal .container {
+
+    display: flex;
+    flex-direction: column;
+    
+}
+
+#login-modal label {
+
+    cursor: pointer;
+
+}
+
+#login-modal-container {
+
+    display: block;
+    pointer-events: none;
+
+    opacity: 0;
+    transition: opacity 400ms ease-in-out;
+
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.774);
+    backdrop-filter: blur(2px);
+
+}
+
+#login-btn {
+
+    position: absolute;
+    cursor: pointer;
+
+    left: 50%;
+    color: purple;
+    transform: translateX(-50%);
+    bottom: 10px;
+
+}
+
+#toggle {
+
+    display: none;
+
+}
+
+#toggle:checked ~ #login-modal-container {
+    pointer-events: auto;
+    opacity: 1;
 }
 
 @media only screen and (max-width: 1080px) {
@@ -86,6 +179,20 @@ a:link {
     #sidenav a {
 
         margin-left: 10px;
+
+    }
+
+    #login-modal {
+
+        padding: 10px;
+        width: 80%; 
+
+    }
+
+    #login-btn {
+
+        transform: none;
+        right: 0px;
 
     }
 
