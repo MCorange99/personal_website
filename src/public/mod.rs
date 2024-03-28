@@ -2,6 +2,8 @@
 mod routes;
 mod templates;
 
+use std::sync::Mutex;
+
 use actix_web::{web, App, HttpServer};
 use actix_files as actix_fs;
 
@@ -13,7 +15,7 @@ pub(crate) async fn start_actix(config: &Config, database: Database) -> anyhow::
     log::info!("Serving an http server at http://{bindip}");
     HttpServer::new(move || {
         App::new()
-            .app_data(actix_web::web::Data::new(database.clone()))
+            .app_data(actix_web::web::Data::new(Mutex::new(database.clone())))
             .route("/", web::get().to(routes::index)) // index.html
             .service(actix_fs::Files::new("/static", "./static").index_file("index.html")) // static directory
             .service(web::redirect("/favicon.ico", "/static/favicon.ico")) //? special redirect for favicon

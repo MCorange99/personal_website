@@ -1,5 +1,5 @@
 body {
-    
+
     background: url(/static/assets/bg.gif);
     color: white;
     font-family: monospace;
@@ -19,7 +19,7 @@ body {
     text-align: center;
     width: 100%;
     margin-top: 10px;
-    
+
 }
 
 .titlebar {
@@ -34,7 +34,7 @@ a:link {
 }
 
 #content {
-    width: 60%;
+    width: 50%;
 }
 
 #main-pane {
@@ -71,7 +71,7 @@ a:link {
         width: 100%;
 
     }
-    
+
     #content-pane, #sidenav {
         height: 100%;
         width: 100%;
@@ -88,5 +88,5 @@ a:link {
         margin-left: 10px;
 
     }
-    
+
 }
