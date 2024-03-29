@@ -1,78 +1,46 @@
 <!DOCTYPE html>
 <html>
-
     <head>
-
-        <title>placeholder</title>
+        <title>{{title}}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="/static/css/global.css">
         <link rel="stylesheet" href="/static/css/index.css">
-
     </head>
-
     <body>
-
         <input type="checkbox" id="toggle">
-
         <div id="content">
-
             <div class="box titlebar">
-
-                <h1>Placeholder</h1>
-
+                <h1>{{title}}</h1>
             </div>
-
-
-
             <div id="main-pane">
-
-
                 <div class="box" id="sidenav">
-
                     <a href="#">Home</a>
                     <a href="#">Home</a>
                     <a href="#">Home</a>
                     <a href="#">Home</a>
                     <label id="login-btn" for="toggle">Login</label>
-
                 </div>
-
                 <div class="box" id="content-pane">
-
-
-                    <p>{{placeholder}}</p>
-
-                    <div class="post">
-                        <img class="post-img" src="/static/assets/uwu.jpg" alt="post img">
-                        <span>
-                            <h2 class="post-title">Title text</h3>
-                            <p class="post-desc">Description text</p>
-                        </span>
-                    </div>
-
-                    <div class="post">
-                        <img class="post-img" src="/static/assets/uwu.jpg" alt="post img">
-                        <span>
-                            <h2 class="post-title">Title text</h3>
-                            <p class="post-desc">Description text</p>
-                        </span>
-                    </div>
-
+                    {% for post in posts %}
+                        <div class="post">
+                            <a href="{{post.url}}"><img src="{{post.image}}" alt="post img"></a>
+                            <span>
+                                <a href="{{post.url}}"><h2>{{post.title}}</h3></a>
+                                <p>{{post.description}}</p>
+                            </span>
+                        </div>
+                    {% endfor %}
                 </div>
-
             </div>
-
         </div>
 
         <div id="login-modal-container">
-
             <div id="login-modal">
-                        
+
                 <h1>login <labeL for="toggle">(x)</labeL></h1>
                 <p>secrets beyond human comprehension lie beneath this unassuming login screen</p>
-    
-                <div class="container">
 
+                <div class="container">
                     <div class="form-group">
                         <label for="uname"><b>Email:</b></label>
                         <input type="text" name="uname" required>
@@ -82,7 +50,7 @@
                         <label for="psw"><b>Password:</b></label>
                         <input type="password" name="psw" required>
                     </div>
-                      
+
                     <br>
 
                     <button type="submit">Login</button>
