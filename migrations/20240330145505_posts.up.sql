@@ -6,6 +6,6 @@ CREATE TABLE IF NOT EXISTS posts (
     img_url TEXT NOT NULL,
     origin_url TEXT NOT NULL,
     original_request TEXT NOT NULL,
-    posted_on TIMESTAMP NOT NULL,
+    posted_on BIGINT NOT NULL,
     PRIMARY KEY (id)
 )
