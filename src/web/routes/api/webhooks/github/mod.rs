@@ -24,18 +24,22 @@ pub async fn handler(req: HttpRequest, token: web::Path<String>, body: Bytes, db
     };
 
     let Some(event_type) = req.headers().get("X-GitHub-Event") else {
+        log::debug!("No X-GitHub-Event header");
         return Ok(HttpResponse::BadRequest());
     };
 
     let Ok(event_type) = event_type.to_str() else {
+        log::debug!("Bad X-GitHub-Event header");
         return Ok(HttpResponse::BadRequest());
     };
 
     let Ok(json) = String::from_utf8(body.to_vec()) else {
+        log::debug!("Bad request body");
         return Ok(HttpResponse::BadRequest());
     };
 
     let Ok(event) = types::Event::from_raw_json(event_type, json.clone()) else {
+        log::debug!("Bad request body json");
         return Ok(HttpResponse::BadRequest());
     };
 
