@@ -7,5 +7,5 @@ pub fn get_scope() -> Scope {
     Scope::new("/wh")
         .route("/", web::get().to(HttpResponse::Ok))
         .route("/github", web::get().to(HttpResponse::Ok))
-        .route("/github", web::post().to(github::handler))
+        .route("/github/{token}", web::post().to(github::handler))
 }

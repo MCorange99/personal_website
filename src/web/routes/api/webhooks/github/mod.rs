@@ -3,22 +3,16 @@ pub mod events;
 
 use std::{borrow::BorrowMut, sync::Mutex};
 
-use actix_web::{http::header, web::{self, Bytes, Data}, HttpRequest, HttpResponse, Responder, Result, Scope};
+use actix_web::{http::header, post, web::{self, Bytes, Data}, HttpRequest, HttpResponse, Responder, Result, Scope};
 
 use crate::database::{models, Database};
 
-pub async fn handler(req: HttpRequest, body: Bytes, db: Data<Mutex<Database>>) -> Result<impl Responder> {
-    let Some(auth) = req.headers().get(header::AUTHORIZATION) else {
-        return Ok(HttpResponse::Unauthorized());
-    };
+pub async fn handler(req: HttpRequest, token: web::Path<String>, body: Bytes, db: Data<Mutex<Database>>) -> Result<impl Responder> {
 
-    let Ok(token) = auth.to_str() else {
-        return Ok(HttpResponse::Unauthorized());
-    };
 
     let token = models::tokens::Token::get_by_token(
-        db.lock().unwrap().borrow_mut(),
-    token.to_string()
+            db.lock().unwrap().borrow_mut(),
+            token.to_string()
         ).await;
 
     let Ok(token) = token else {
