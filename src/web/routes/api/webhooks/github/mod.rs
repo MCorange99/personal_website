@@ -38,10 +38,13 @@ pub async fn handler(req: HttpRequest, token: web::Path<String>, body: Bytes, db
         return Ok(HttpResponse::BadRequest());
     };
 
-    let Ok(event) = types::Event::from_raw_json(event_type, json.clone()) else {
-        log::debug!("Bad request body json");
-        log::debug!("{json:?}");
-        return Ok(HttpResponse::BadRequest());
+    let event = match types::Event::from_raw_json(event_type, json.clone()) {
+        Ok(e) => e,
+        Err(e) => {
+            log::debug!("Bad request body json: {e}");
+            log::debug!("{json:?}");
+            return Ok(HttpResponse::BadRequest());
+        }
     };
 
     match event {
