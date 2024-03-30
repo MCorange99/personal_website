@@ -17,6 +17,7 @@ impl Event {
 pub struct Value { pub json: serde_json::Value }
 
 #[derive(Debug, Deserialize, Clone)]
+#[serde(rename_all = "lowercase")]
 pub enum Event {
     CommitComment(CommitCommentEvent),
     Create(CreateEvent),
