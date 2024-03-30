@@ -21,7 +21,7 @@
                     <label id="login-btn" for="toggle">Login</label>
                 </div>
                 <div class="box" id="content-pane">
-                    {% for post in posts %}
+                    {% for post in posts if posts.len() > 0 %}
                         <div class="post">
                             <a href="{{post.origin_url}}"><img src="{{post.img_url}}" alt="post img"></a>
                             <span>
@@ -29,6 +29,8 @@
                                 <p>{{post.descr}}</p>
                             </span>
                         </div>
+                    {% else %}
+                        <h2 style="color: gray;">No posts found, check back later. D:</h2>
                     {% endfor %}
                 </div>
             </div>
