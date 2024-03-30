@@ -1,4 +1,7 @@
 pub mod api;
+pub mod contact;
+pub mod projects;
+pub mod redirect;
 
 use std::sync::Mutex;
 
@@ -15,24 +18,13 @@ pub async fn index(db: Data<Mutex<Database>>) -> Result<impl Responder> {
 
     let posts = match crate::database::models::posts::Post::get_last_n(&mut db.lock().unwrap(), 10).await {
         Ok(p) => p,
-        _ => {
-            vec![]
-        }
+        _ => vec![]
     };
 
     let html = IndexTemplate {
         posts,
-        title: String::from("Very cool mcoranges website :3"),
+        title: String::from("MCorange - The website :3"),
     }.render().expect("Failed to render index.html");
 
     Ok(Html(html))
 }
-/*
-<div class="post">
-    <img src="/static/assets/uwu.jpg" alt="post img">
-    <span>
-        <h2>Title text</h3>
-        <p>Description text</p>
-    </span>
-</div>
-*/

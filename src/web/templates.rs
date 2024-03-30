@@ -10,3 +10,16 @@ pub struct IndexTemplate{
 }
 
 
+#[derive(Debug, Clone, Template)]
+#[template(path = "projects.html")]
+pub struct ProjectTemplate{
+    pub title: String,
+}
+
+#[derive(Debug, Clone, Template)]
+#[template(path = "contact.html")]
+pub struct ContactTemplate{
+    pub title: String,
+}
+
+

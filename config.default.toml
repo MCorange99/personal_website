@@ -6,3 +6,7 @@ port=8080
 
 [database]
 url="postgresql://postgres@localhost/mctest"
+
+[[redirect]]
+from="hmm"
+to="https://stallman-copypasta.github.io/"

@@ -26,7 +26,7 @@ async fn main() -> anyhow::Result<()> {
         return Ok(());
     }
 
-    if let Err(e) = web::start_actix(config.get_ref(), database).await {
+    if let Err(e) = web::start_actix(config.get_ref().clone(), database).await {
         log::error!("Actix had an error: {e}");
     }
     Ok(())
