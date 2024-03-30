@@ -629,7 +629,7 @@ pub struct Repository {
     pub contributors_url: String,
     pub created_at: String,
     pub default_branch: String,
-    pub description: String,
+    pub description: Option<String>,
     pub downloads_url: String,
     pub events_url: String,
     pub forks: u64,
