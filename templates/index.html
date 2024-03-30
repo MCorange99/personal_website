@@ -23,9 +23,9 @@
                 <div class="box" id="content-pane">
                     {% for post in posts if posts.len() > 0 %}
                         <div class="post">
-                            <a href="{{post.origin_url}}"><img src="{{post.img_url}}" alt="post img"></a>
+                            <a class="post-img" href="{{post.origin_url}}"><img class="post-img" src="{{post.img_url}}" alt="post img"></a>
                             <span>
-                                <a href="{{post.origin_url}}"><h3>{{post.title}}</h3></a>
+                                <a class="post-title" href="{{post.origin_url}}"><h3 class="post-title">{{post.title}}</h3></a>
                                 <p>{{post.descr}}</p>
                             </span>
                         </div>
