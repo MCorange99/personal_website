@@ -655,6 +655,7 @@ pub struct Repository {
     pub labels_url: String,
     pub language: Option<String>,
     pub languages_url: String,
+    pub license: Option<String>,
     pub merges_url: String,
     pub milestones_url: String,
     pub mirror_url: Option<String>,
