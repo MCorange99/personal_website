@@ -1,4 +1,4 @@
--- Your SQL goes here
+
 CREATE TABLE IF NOT EXISTS Users (
     id UUID NOT NULL UNIQUE,
     email TEXT NOT NULL,

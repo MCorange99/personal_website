@@ -1,3 +1,5 @@
+pub mod api;
+
 use std::sync::Mutex;
 
 use actix_web_lab::respond::Html;

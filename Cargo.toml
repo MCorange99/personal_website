@@ -24,13 +24,19 @@ actix-web = "4.5.1"
 actix-web-lab = "0.20.2"
 askama = "0.12.1"
 
+#? web::api
+chrono = { version = "0.4.37", features = ["serde"] }
+
 #? database
 sqlx = { version = "0.7.4", features = ["tls-rustls", "runtime-tokio", "postgres", "uuid"] }
 uuid = { version = "1.8.0", features = ["v4"] }
-time = { version = "0.3.34", features = ["macros"] }
+# time = { version = "0.3.34", features = ["macros"] }
 crypto = { version = "0.5.1", features = ["digest", "password-hash"] }
 bcrypt = "0.15.1"
 futures = "0.3.30"
+bitflags = "2.5.0"
+rand = "0.8.5"
+serde_json = "1.0.115"
 
 [profile.dev.package.sqlx-macros]
 opt-level = 3

@@ -4,7 +4,7 @@ use crate::database::Database;
 use futures::TryStreamExt;
 
 #[derive(sqlx::FromRow)]
-pub struct Users {
+pub struct User {
     pub id: uuid::Uuid,
     pub email: String,
     pub username: String,
@@ -13,7 +13,7 @@ pub struct Users {
 }
 
 #[allow(dead_code)]
-impl Users {
+impl User {
     pub async fn create_new(db: &mut Database, email: String, username: String, password: String) -> anyhow::Result<Uuid> {
         let id = Uuid::new_v4();
         let hash = bcrypt::hash(password, 15)?;
