@@ -559,7 +559,7 @@ pub struct PushRepository {
     pub contributors_url: String,
     pub created_at: u64,
     pub default_branch: String,
-    pub description: String,
+    pub description: Option<String>,
     pub downloads_url: String,
     pub events_url: String,
     pub fork: bool,
