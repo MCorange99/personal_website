@@ -22,10 +22,19 @@
 }
 
 .post span {
-
     display: block;
-
     margin-left: 10px;
     text-align: left;
-    line-height: 10px;
+    line-height: 0;
+}
+
+.post span a {
+    height: fit-content;
+}
+
+.post span h4 {
+    margin-bottom: 0;
+    margin-top: 6px;
+    font-size: 11pt;
+
 }
