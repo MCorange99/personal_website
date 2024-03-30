@@ -42,7 +42,7 @@ pub async fn handler(req: HttpRequest, token: web::Path<String>, body: Bytes, db
         Ok(e) => e,
         Err(e) => {
             log::debug!("Bad request body json: {e}");
-            log::debug!("{json}");
+            // log::debug!("{json}");
             return Ok(HttpResponse::BadRequest());
         }
     };
