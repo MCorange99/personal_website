@@ -5,7 +5,7 @@ CREATE TABLE IF NOT EXISTS posts (
     descr TEXT NOT NULL,
     img_url TEXT NOT NULL,
     origin_url TEXT NOT NULL,
-    original_request JSON NOT NULL,
+    original_request TEXT NOT NULL,
     posted_on TIMESTAMP NOT NULL,
     PRIMARY KEY (id)
 )
