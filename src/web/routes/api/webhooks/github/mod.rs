@@ -7,13 +7,6 @@ use actix_web::{http::header, web::{self, Bytes, Data}, HttpRequest, HttpRespons
 
 use crate::database::{models, Database};
 
-pub fn get_scope() -> Scope {
-    Scope::new("/github")
-        .route("/", web::get().to(HttpResponse::Ok))
-        .route("/", web::post().to(handler))
-
-}
-
 pub async fn handler(req: HttpRequest, body: Bytes, db: Data<Mutex<Database>>) -> Result<impl Responder> {
     let Some(auth) = req.headers().get(header::AUTHORIZATION) else {
         return Ok(HttpResponse::Unauthorized());
