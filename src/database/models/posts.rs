@@ -17,7 +17,7 @@ pub struct Post {
 
 #[allow(dead_code)]
 impl Post {
-    pub async fn create_new(db: &mut Database, title: String, descr: String, img_url: String, origin_url: String, orignal_request: Value) -> anyhow::Result<Uuid> {
+    pub async fn create_new(db: &mut Database, title: String, descr: String, img_url: String, origin_url: String, orignal_request: String) -> anyhow::Result<Uuid> {
         let id = Uuid::new_v4();
         let posted_on = chrono::Utc::now().timestamp_millis();
 

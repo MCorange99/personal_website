@@ -50,7 +50,7 @@ pub async fn handler(req: HttpRequest, token: web::Path<String>, body: Bytes, db
     match event {
         types::Event::Release(body) => events::release_handler(db, token, body, json).await,
         _ => {
-            dbg!(json);
+            // dbg!(json);
             Ok(HttpResponse::Ok())
         }
     }
