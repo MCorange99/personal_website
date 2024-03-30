@@ -3,16 +3,14 @@ pub mod events;
 
 use std::{borrow::BorrowMut, sync::Mutex};
 
-use actix_web::{http::header, web::{self, Bytes, Data}, HttpRequest, HttpResponse, Responder, Result, Scope};
+use actix_web::{http::header, web::{self, Bytes, Data}, HttpRequest, HttpResponse, Resource, Responder, Result, Scope};
 
 use crate::database::{models, Database};
 
-pub fn get_scope() -> Scope {
-    Scope::new("/github")
-        .service(
-            web::resource("/")
-                .to(handler)
-        )
+pub fn get_scope() -> Resource {
+    web::resource("/").route(
+        web::route().to(handler)
+    )
 }
 
 pub async fn handler(req: HttpRequest, body: Bytes, db: Data<Mutex<Database>>) -> Result<impl Responder> {
