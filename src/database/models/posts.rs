@@ -11,7 +11,7 @@ pub struct Post {
     pub descr: String,
     pub img_url: String,
     pub origin_url: String,
-    pub original_request: Value,
+    pub original_request: String,
     pub posted_on: i64,
 }
 

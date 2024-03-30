@@ -1,6 +1,6 @@
-use actix_web::{web, Scope};
+use actix_web::Scope;
 
-mod github;
+pub mod github;
 
 
 pub fn get_scope() -> Scope {

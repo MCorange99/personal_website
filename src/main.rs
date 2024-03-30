@@ -7,7 +7,7 @@ mod config;
 mod database;
 
 #[actix_web::main]
-async fn main() -> std::io::Result<()> {
+async fn main() -> anyhow::Result<()> {
     let cli = cli::CliArgs::parse();
     logger::init_logger(&cli);
 
@@ -19,7 +19,12 @@ async fn main() -> std::io::Result<()> {
         }
     };
 
-    let Ok(database) = database::Database::new(config.get_ref()).await else {return Ok(())};
+    let Ok(mut database) = database::Database::new(config.get_ref()).await else {return Ok(())};
+
+    if cli::handle_command(&cli, &mut database).await? {
+        log::info!("Command exectuted, exiting");
+        return Ok(());
+    }
 
     if let Err(e) = web::start_actix(config.get_ref(), database).await {
         log::error!("Actix had an error: {e}");

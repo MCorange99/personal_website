@@ -6,7 +6,7 @@ use futures::TryStreamExt;
 
 use super::Permissions;
 
-#[derive(sqlx::FromRow)]
+#[derive(sqlx::FromRow, Debug)]
 pub struct Token {
     pub token: String,
     pub owner_id: Uuid,

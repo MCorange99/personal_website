@@ -4,9 +4,11 @@ pub mod users;
 pub mod tokens;
 pub mod posts;
 
+#[derive(Debug, Clone)]
+pub struct Permissions(i64);
 
 bitflags! {
-    struct Permissions: i64 {
+    impl Permissions: i64 {
         const MAKE_POST = 1 << 0;
     }
 }

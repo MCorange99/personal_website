@@ -1,10 +1,9 @@
-
-mod routes;
-mod templates;
+pub mod routes;
+pub mod templates;
 
 use std::sync::Mutex;
 
-use actix_web::{web, App, HttpServer, Route};
+use actix_web::{web, App, HttpServer};
 use actix_files as actix_fs;
 
 use crate::{config::definition::Config, database::Database};

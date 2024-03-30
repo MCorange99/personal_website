@@ -19,7 +19,7 @@ impl User {
         let hash = bcrypt::hash(password, 15)?;
 
         sqlx::query(r#"
-            INSERT INTO users ( id, email, username, pw_hash, permissions )
+            INSERT INTO "users" ( id, email, username, pw_hash, permissions )
             VALUES ( $1, $2, $3, $4, 0 )
             RETURNING id
         "#)
