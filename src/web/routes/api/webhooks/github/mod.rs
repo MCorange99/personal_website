@@ -10,7 +10,7 @@ use crate::database::{models, Database};
 pub fn get_scope() -> Scope {
     Scope::new("/github")
         .service(
-            web::resource("/push")
+            web::resource("/")
                 .to(handler)
         )
 }
