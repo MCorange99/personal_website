@@ -22,6 +22,7 @@ impl Post {
         let posted_on = chrono::Utc::now().timestamp_millis();
 
 
+
         sqlx::query(r#"
             INSERT INTO posts ( id, title, descr, img_url, origin_url, original_request, posted_on )
             VALUES ( $1, $2, $3, $4, $5, $6, $7 )
