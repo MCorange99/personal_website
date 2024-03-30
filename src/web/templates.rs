@@ -1,16 +1,12 @@
 use askama::Template;
 
+use crate::database::models::posts::Post;
+
 #[derive(Debug, Clone, Template)]
 #[template(path = "index.html")]
 pub struct IndexTemplate{
     pub title: String,
-    pub posts: Vec<IndexTemplatePost>
+    pub posts: Vec<Post>
 }
 
-#[derive(Debug, Clone)]
-pub struct IndexTemplatePost {
-    pub image: String,
-    pub title: String,
-    pub description: String,
-    pub url: String
-}
+

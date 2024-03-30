@@ -1,4 +1,3 @@
-use serde_json::Value;
 use uuid::Uuid;
 use sqlx::Row;
 use crate::database::Database;

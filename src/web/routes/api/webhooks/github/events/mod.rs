@@ -2,16 +2,15 @@ use std::{borrow::BorrowMut, sync::Mutex};
 
 use actix_web::{web::Data, HttpResponse, HttpResponseBuilder, Result};
 
-use crate::database::{models::{self, tokens::Token}, Database};
+use crate::database::{models, Database};
 
 use super::types::ReleaseEvent;
 
-pub async fn release_handler(db: Data<Mutex<Database>>, token: Token, body: ReleaseEvent, raw_body: String) -> Result<HttpResponseBuilder> {
+pub async fn release_handler(db: Data<Mutex<Database>>, body: ReleaseEvent, raw_body: String) -> Result<HttpResponseBuilder> {
 
     if body.action != "released" {
         return Ok(HttpResponse::Ok());
     }
-
 
     let title = format!("(New release {}:{}) {}", body.repository.full_name, body.release.tag_name, body.release.name.unwrap_or("No title provided".into()));
     let origin_url = body.repository.html_url.clone();

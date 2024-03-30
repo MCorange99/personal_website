@@ -3,9 +3,9 @@ pub mod events;
 
 use std::{borrow::BorrowMut, sync::Mutex};
 
-use actix_web::{http::header, post, web::{self, Bytes, Data}, HttpRequest, HttpResponse, Responder, Result, Scope};
+use actix_web::{web::{self, Bytes, Data}, HttpRequest, HttpResponse, Responder, Result};
 
-use crate::database::{models, Database};
+use crate::database::{models::{self, Permissions}, Database};
 
 pub async fn handler(req: HttpRequest, token: web::Path<String>, body: Bytes, db: Data<Mutex<Database>>) -> Result<impl Responder> {
 
@@ -22,6 +22,10 @@ pub async fn handler(req: HttpRequest, token: web::Path<String>, body: Bytes, db
     let Some(token) = token else {
         return Ok(HttpResponse::Unauthorized());
     };
+
+    if !token.permissions.contains(Permissions::MAKE_POST) {
+        return Ok(HttpResponse::Unauthorized());
+    }
 
     let Some(event_type) = req.headers().get("X-GitHub-Event") else {
         log::debug!("No X-GitHub-Event header");
@@ -48,7 +52,7 @@ pub async fn handler(req: HttpRequest, token: web::Path<String>, body: Bytes, db
     };
 
     match event {
-        types::Event::Release(body) => events::release_handler(db, token, body, json).await,
+        types::Event::Release(body) => events::release_handler(db, body, json).await,
         _ => {
             // dbg!(json);
             Ok(HttpResponse::Ok())
