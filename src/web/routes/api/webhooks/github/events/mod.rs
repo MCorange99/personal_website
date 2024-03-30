@@ -11,7 +11,7 @@ pub async fn release_handler(db: Data<Mutex<Database>>, token: Token, body: Rele
     let title = format!("{} has been released on {}!", body.release.tag_name, body.repository.full_name);
 
     dbg!(body);
-
+    body.hook
     // models::posts::Post::create_new(
     //     db.lock().unwrap().borrow_mut(),
     //     title,

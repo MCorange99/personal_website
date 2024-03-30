@@ -47,7 +47,10 @@ pub async fn handler(req: HttpRequest, body: Bytes, db: Data<Mutex<Database>>) -
 
     match event {
         types::Event::Release(body) => events::release_handler(db, token, body, json).await,
-        _ => Ok(HttpResponse::Ok())
+        _ => {
+            dbg!(json);
+            Ok(HttpResponse::Ok())
+        }
     }
 
 }
